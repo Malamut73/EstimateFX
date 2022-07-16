@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.estimatefx.controllers.SignUpController">
+    <children>
+        <Label ellipsisString="0" style="-fx-background-radius: 15; -fx-background-color: #f2c94c;" text="Смета" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0">
+            <font>
+                <Font size="39.0" />
+            </font>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Label>
+        <AnchorPane layoutY="100.0" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" AnchorPane.topAnchor="100.0">
+            <children>
+                <TextField fx:id="signUpPassword" layoutX="45.0" layoutY="172.0" prefHeight="25.0" prefWidth="336.0" promptText="Пароль" style="-fx-border-color: #f2c94c;">
+                    <font>
+                        <Font size="18.0" />
+                    </font></TextField>
+                <PasswordField fx:id="signUpCountry" layoutX="45.0" layoutY="225.0" prefHeight="25.0" prefWidth="336.0" promptText="Страна" style="-fx-border-color: #f2c94c;">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </PasswordField>
+                <Button fx:id="signUpEntreButton" layoutX="45.0" layoutY="316.0" mnemonicParsing="false" prefWidth="94.0" style="-fx-background-color: #f2c94c;" text="Войти">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Button>
+            <TextField fx:id="signUpLogin" layoutX="45.0" layoutY="120.0" prefHeight="25.0" prefWidth="336.0" promptText="Логин" style="-fx-border-color: #f2c94c;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="signUpLastName" layoutX="45.0" layoutY="67.0" prefHeight="25.0" prefWidth="336.0" promptText="Фамилия" style="-fx-border-color: #f2c94c;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="signUpName" layoutX="45.0" layoutY="14.0" prefHeight="25.0" prefWidth="336.0" promptText="Имя" style="-fx-border-color: #f2c94c;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <CheckBox fx:id="signUpMale" layoutX="45.0" layoutY="282.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="56.0" selected="true" text="Муж" />
+            <CheckBox fx:id="signUpFamale" layoutX="107.0" layoutY="282.0" mnemonicParsing="false" text="Жен" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

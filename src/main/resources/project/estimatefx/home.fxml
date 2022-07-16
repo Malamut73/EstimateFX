@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.estimatefx.controllers.HomeController">
+    <children>
+        <Label ellipsisString="0" style="-fx-background-radius: 15; -fx-background-color: #f2c94c;" text="Смета" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0">
+            <font>
+                <Font size="39.0" />
+            </font>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Label>
+        <AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" AnchorPane.topAnchor="100.0">
+            <children>
+                <Label ellipsisString="0" layoutX="45.0" layoutY="48.0" style="-fx-background-radius: 15;" text="РВТ-СПб">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </Label>
+            <ImageView fx:id="imageRVTButton" fitHeight="150.0" fitWidth="200.0" layoutX="45.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/logRVT.png" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
