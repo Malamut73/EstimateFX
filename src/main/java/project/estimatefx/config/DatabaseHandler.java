@@ -1,25 +1,35 @@
 package project.estimatefx.config;
 
+import org.postgresql.ds.PGSimpleDataSource;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DatabaseHandler extends Config {
+public class DatabaseHandler {
 
-    Connection dbConnection;
+    private static final PGSimpleDataSource ds;
+    private static final Connection connection;
 
-    public Connection getDbConnection()
-            throws ClassNotFoundException, SQLException {
+    static{
+        ds = new PGSimpleDataSource();
+        ds.setServerNames(new String[]{"localhost2:5432"});
+        ds.setDatabaseName("Estimate");
+        ds.setUser("postgres");
+        ds.setPassword("root");
 
-        String connectionString = "jdbc:postgres://" + dbHost + ":"
-                + dbPort + "/" + dbName ;
-        Class.forName("com.postgres.jdbc.Driver");
-        dbConnection = DriverManager.getConnection(connectionString,
-                dbUser, dbPass);
-
-        return dbConnection;
+        try {
+            connection = ds.getConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
     }
+
+    public static Connection getConnection(){
+        return connection;
+    }
+
 
     public void signUpUser (String firstName, String lastName,String userName,
                            String password, String location, String gender){
@@ -29,7 +39,7 @@ public class DatabaseHandler extends Config {
                 Const.USER_LOCATION + "," + Const.USER_GENDER + ")" +
                 "VALUES(?,?,?,?,?,?)";
         try {
-            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(insert);
             preparedStatement.setString(1, firstName);
             preparedStatement.setString(2, lastName);
             preparedStatement.setString(3, userName);
@@ -37,7 +47,7 @@ public class DatabaseHandler extends Config {
             preparedStatement.setString(5, location);
             preparedStatement.setString(6, gender);
             preparedStatement.executeUpdate();
-        }catch (SQLException | ClassNotFoundException e) {
+        }catch (SQLException  e) {
             e.printStackTrace();
         }
 
