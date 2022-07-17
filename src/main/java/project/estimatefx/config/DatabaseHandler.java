@@ -46,4 +46,23 @@ public class DatabaseHandler {
         }
 
     }
+
+    public ResultSet getUserFromDB(User user){
+        ResultSet resultSet = null;
+
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USER_USERNAME +
+                " =? AND " + Const.USER_PASSWORD + " =?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(select);
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getPassword());
+            resultSet =  preparedStatement.executeQuery();
+        }catch (SQLException  e) {
+            e.printStackTrace();
+        }
+
+        return resultSet;
+
+    }
 }
