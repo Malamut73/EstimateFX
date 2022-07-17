@@ -1,51 +1,45 @@
 package project.estimatefx.config;
 
 import org.postgresql.ds.PGSimpleDataSource;
+import project.estimatefx.user.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseHandler {
 
-    private static final PGSimpleDataSource ds;
-    private static final Connection connection;
+    private static final String DB_USERNAME = "postgres";
+    private static final String DB_PASSWORD = "root";
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/estimate";
 
-    static{
-        ds = new PGSimpleDataSource();
-        ds.setServerNames(new String[]{"localhost2:5432"});
-        ds.setDatabaseName("Estimate");
-        ds.setUser("postgres");
-        ds.setPassword("root");
-
+    Connection connection;
+    Statement statement;
+    {
         try {
-            connection = ds.getConnection();
+            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            statement = connection.createStatement();
         } catch (SQLException e) {
-            throw new RuntimeException();
+            e.printStackTrace();
         }
     }
 
-    public static Connection getConnection(){
+    public Connection getConnection(){
         return connection;
     }
 
-
-    public void signUpUser (String firstName, String lastName,String userName,
-                           String password, String location, String gender){
+    public void signUpUser (User user){
         String insert = "INSERT INTO " + Const.USER_TABLE + "(" +
                 Const.USER_FIRSTNAME + "," + Const.USER_LASTNAME + "," +
                 Const.USER_USERNAME + "," + Const.USER_PASSWORD + "," +
                 Const.USER_LOCATION + "," + Const.USER_GENDER + ")" +
                 "VALUES(?,?,?,?,?,?)";
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(insert);
-            preparedStatement.setString(1, firstName);
-            preparedStatement.setString(2, lastName);
-            preparedStatement.setString(3, userName);
-            preparedStatement.setString(4, password);
-            preparedStatement.setString(5, location);
-            preparedStatement.setString(6, gender);
+            PreparedStatement preparedStatement = connection.prepareStatement(insert);
+            preparedStatement.setString(1, user.getFirstName());
+            preparedStatement.setString(2, user.getLastName());
+            preparedStatement.setString(3, user.getUserName());
+            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(5, user.getLocation());
+            preparedStatement.setString(6, user.getGender());
             preparedStatement.executeUpdate();
         }catch (SQLException  e) {
             e.printStackTrace();

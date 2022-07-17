@@ -6,17 +6,19 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import project.estimatefx.config.DatabaseHandler;
+import project.estimatefx.user.User;
 
 public class SignUpController {
 
+
     @FXML
-    private PasswordField signUpCountry;
+    private TextField signUpCountry;
 
     @FXML
     private Button signUpEntreButton;
 
     @FXML
-    private CheckBox signUpFemale;
+    private CheckBox signUpFamale;
 
     @FXML
     private TextField signUpLastName;
@@ -31,15 +33,38 @@ public class SignUpController {
     private TextField signUpName;
 
     @FXML
-    private TextField signUpPassword;
+    private PasswordField signUpPassword;
 
     @FXML
     void initialize(){
 
+        signUpNewUser();
+
+    }
+
+    private void signUpNewUser() {
+
         DatabaseHandler dbHandler = new DatabaseHandler();
+
         signUpEntreButton.setOnAction(event -> {
-            dbHandler.signUpUser(signUpName.getText(), signUpLastName.getText(), signUpLogin.getText(),
-                    signUpPassword.getText(), signUpCountry.getText(), "Male");
+
+            String firstName = signUpName.getText();
+            String lastName = signUpLastName.getText();
+            String login = signUpLogin.getText();
+            String password = signUpPassword.getText();
+            String country = signUpCountry.getText();
+            String gender = "";
+
+            if(signUpMale.isSelected()){
+                gender = "Мужской";
+            }else{
+                gender = "Женский";
+            }
+
+            User user = new User(firstName, lastName, login,
+                    password, country, gender);
+
+            dbHandler.signUpUser(user);
         });
     }
 

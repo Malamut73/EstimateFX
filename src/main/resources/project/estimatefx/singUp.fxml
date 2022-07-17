@@ -19,18 +19,9 @@
                 <Insets />
             </opaqueInsets>
         </Label>
-        <AnchorPane layoutY="100.0" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" AnchorPane.topAnchor="100.0">
+        <AnchorPane layoutY="100.0" prefHeight="400.0" prefWidth="700.0" style="-fx-border-color: #ffffff;" AnchorPane.topAnchor="100.0">
             <children>
-                <TextField fx:id="signUpPassword" layoutX="45.0" layoutY="172.0" prefHeight="25.0" prefWidth="336.0" promptText="Пароль" style="-fx-border-color: #f2c94c;">
-                    <font>
-                        <Font size="18.0" />
-                    </font></TextField>
-                <PasswordField fx:id="signUpCountry" layoutX="45.0" layoutY="225.0" prefHeight="25.0" prefWidth="336.0" promptText="Страна" style="-fx-border-color: #f2c94c;">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </PasswordField>
-                <Button fx:id="signUpEntreButton" layoutX="45.0" layoutY="316.0" mnemonicParsing="false" prefWidth="94.0" style="-fx-background-color: #f2c94c;" text="Войти">
+                <Button fx:id="signUpEntreButton" layoutX="45.0" layoutY="316.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="272.0" style="-fx-background-color: #f2c94c;" text="Зарегестрироваться">
                     <font>
                         <Font size="23.0" />
                     </font>
@@ -52,6 +43,16 @@
             </TextField>
             <CheckBox fx:id="signUpMale" layoutX="45.0" layoutY="282.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="56.0" selected="true" text="Муж" />
             <CheckBox fx:id="signUpFamale" layoutX="107.0" layoutY="282.0" mnemonicParsing="false" text="Жен" />
+            <PasswordField fx:id="signUpPassword" layoutX="45.0" layoutY="171.0" prefHeight="41.0" prefWidth="336.0" promptText="Пароль" style="-fx-border-color: #f2c94c;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <TextField fx:id="signUpCountry" layoutX="45.0" layoutY="226.0" prefHeight="41.0" prefWidth="336.0" promptText="Страна" style="-fx-border-color: #f2c94c;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
             </children>
         </AnchorPane>
     </children>

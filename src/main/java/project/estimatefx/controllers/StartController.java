@@ -41,7 +41,6 @@ public class StartController {
         signUpButton.setOnAction(actionEvent -> {
             signUpButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(getClass().getResource("singUp.fxml"));
             loader.setLocation(HelloApplication.class.getResource("singUp.fxml"));
             try {
                 loader.load();
