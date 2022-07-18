@@ -7,9 +7,9 @@ import java.sql.*;
 
 public class DatabaseHandler {
 
-    private static final String DB_USERNAME = "postgres";
-    private static final String DB_PASSWORD = "root";
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/estimate";
+    private static final String DB_USERNAME = "root";
+    private static final String DB_PASSWORD = "lemoor@mail.ru";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/estimate";
 
     Connection connection;
     Statement statement;
@@ -17,10 +17,14 @@ public class DatabaseHandler {
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             statement = connection.createStatement();
-        } catch (SQLException e) {
+        } catch (SQLException  e) {
             e.printStackTrace();
         }
     }
+
+
+
+
 
     public Connection getConnection(){
         return connection;
